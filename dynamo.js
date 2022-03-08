@@ -11,7 +11,7 @@ AWS.config.update({
 const dynamoClient = new AWS.DynamoDB.DocumentClient();
 const TABLE_NAME = "reverse-auction-table";
 
-const getBids = async () {
+const getBids = async () => {
     const params = {
         TableName: TABLE_NAME
     };
@@ -22,11 +22,23 @@ const getBids = async () {
 
 getBids();
 
-const addBid = async (bid){
+async function addBid(bid) {
     const params = {
         TableName: TABLE_NAME,
         Item: bid
-    }
+    };
     return await dynamoClient.put(params).promise();
 }
 
+const bid = {
+    "bidId": 1,
+    "bidAmount": 990,
+    "name": "Joe Test",
+    "streetAddress": "99 Here St",
+    "city": "Springfield",
+    "state": "IL",
+    "zipcode": "15251",
+    "tokenCount": 5
+}
+
+addBid(bid);
