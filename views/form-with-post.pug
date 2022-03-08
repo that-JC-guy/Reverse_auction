@@ -1,0 +1,8 @@
+extends base.pug
+
+block content 
+    form(action="submit-form-with-post", method="post")
+        input(type="text", name="name")
+        input(type="text", name="streetAddress")
+        input(type="text", name="city")
+        input(type="submit", name="Done")

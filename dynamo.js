@@ -16,13 +16,13 @@ const getBids = async () => {
         TableName: TABLE_NAME
     };
     const bids = await dynamoClient.scan(params).promise();
-    console.log(bids);
+    //console.log(bids);
     return bids;
 }
 
-getBids();
+var allBids = getBids();
 
-async function addBid(bid) {
+async function addUpdateBid(bid) {
     const params = {
         TableName: TABLE_NAME,
         Item: bid
@@ -30,7 +30,13 @@ async function addBid(bid) {
     return await dynamoClient.put(params).promise();
 }
 
-const bid = {
+module.exports = {
+    dynamoClient,
+    getBids,
+    addUpdateBid
+}
+
+/*const bid = {
     "bidId": 1,
     "bidAmount": 990,
     "name": "Joe Test",
@@ -41,4 +47,5 @@ const bid = {
     "tokenCount": 5
 }
 
-addBid(bid);
+addUpdateBid(bid);
+*/

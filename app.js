@@ -1,24 +1,52 @@
-const http = require('http')
-const fs = require('fs')
-const port = 5000
+const express = require('express');
+const { json } = require('express/lib/response');
+const { getBids, addUpdateBid } = require('./dynamo');
+const bodyParser = require('body-parser');
 
-const server = http.createServer(function(req, res){
-    res.writeHead(200, { 'Content-Type': 'text/html'})
-    fs.readFile('index.html', function(error, data){
-        if (error) {
-            res.writeHead(404)
-            res.write('Error: File Not Found')
-        } else {
-            res.write(data)
-        }
-        res.end()
-    })
+const app = express();
 
-})
-server.listen(port, function(error){
-    if (error){
-        console.log('Something went wrong...')
-    } else {
-        console.log("Server is listening on port " + port)
+app.use(express.json());
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+ 
+app.get('/bids', async (req, res) =>{
+    try {
+        const bids = await getBids();
+        res.json(bids)
+    } catch (error) {
+        console.error(err);
+        res.status(500).json({err: "Something went wrong..."})
     }
-}) 
+})
+
+app.post('/submit_bid', async (req, res) =>{
+    const bid = req.body;
+    try {
+        const bid = await addUpdateBid();
+        res.json(bid)
+    } catch (error) {
+        console.error(err);
+        res.status(500).json({err: "Something went wrong..."})
+    }
+})
+
+/* FORM CODE */
+app.set('view engine', 'pug');
+app.use(bodyParser.urlencoded({ extended: true})); //fixes inputs in the case they include special characters
+
+app.get('/form-with-post', function(request, response) {
+    return response.render('form-with-post');
+});
+
+app.post('/submit-form-with-post', function(request, response) {
+    return response.send(request.body);
+});
+
+
+const port = process.env.PORT || 5000;
+ 
+app.listen(port, () => {
+    console.log('Listening on port ' + port);
+});
