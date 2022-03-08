@@ -4,13 +4,15 @@
     "description": "",
     "main": "app.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
-      "express": "^4.17.1"
+        "aws-sdk": "^2.1088.0",
+        "axios": "^0.26.0",
+        "dotenv": "^16.0.0",
+        "express": "^4.17.3"
     }
-  }
-  
+}
