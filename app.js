@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
 app.get('/bids', async (req, res) =>{
     try {
         const bids = await getBids();
+        console.log(bids)
         res.json(bids)
     } catch (error) {
         console.error(err);
