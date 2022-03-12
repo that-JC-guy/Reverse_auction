@@ -1,6 +1,7 @@
 const express = require('express');
 const { json } = require('express/lib/response');
 const { getBids, addUpdateBid } = require('./dynamo');
+const { getLowestBid, getTopTenBids } = require('./bids')
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -15,6 +16,7 @@ app.get('/bids', async (req, res) =>{
     try {
         const bids = await getBids();
         console.log(bids)
+        const bidsTopTen = getTopTenBids(bids)
         res.json(bids)
     } catch (error) {
         console.error(err);
