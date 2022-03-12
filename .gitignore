@@ -2,3 +2,8 @@
 node_modules/*
 *.old
 promise.js
+query_testing.js
+dynamodb/*
+notes/*
+
+
