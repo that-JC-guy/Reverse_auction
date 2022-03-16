@@ -5,3 +5,4 @@ promise.js
 query_testing.js
 dynamodb/*
 notes/*
+dtm.js
