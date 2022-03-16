@@ -23,9 +23,9 @@ const getBids = async () => { // Retrieve all bids from DynamoDB
     try {
         const params = {
             TableName: TABLE_NAME,
-            KeyConditionExpression: 'auctionId = :ai',                      //primary key and shortcut (can add 'and [sort key name] = :sk')
-            ProjectionExpression: 'bidderId, dtm, bidAmount, slpAddress',    //filter fields being returned
-            ExpressionAttributeValues: {                                    //What you are searching for in Partition/Sort Key
+            KeyConditionExpression: 'auctionId = :ai',                                  //primary key and shortcut (can add 'and [sort key name] = :sk')
+            ProjectionExpression: 'bidderId, dtm, bidAmount, slpAddress, tokenCount',   //filter fields being returned
+            ExpressionAttributeValues: {                                                //What you are searching for in Partition/Sort Key
                 ':ai' : 'DTM-TEST'                           
             },
             ScanIndexForward: false                                     // Sort Key sort order - true = ascending, false = descending
@@ -76,16 +76,14 @@ module.exports = {
 
 //     const bid = {
 //     "auctionId": "DTM-TEST",
+//     "customer": "Q"
 //     "dtm": Date.now(),
 //     "tokenType": "Q",
 //     "bidderId": bidderId,
 //     "bidId": bidId,
 //     "bidAmount": bidAmount,
 //     "name": "John Q. Tokenholder",
-//     "streetAddress": "123 Main St",
-//     "city": "Manchester",
-//     "state": "NH",
-//     "zipcode": "03102",
+//     "email": "jqtokenholder@here.co"
 //     "phone": "234-567-8910",
 //     "tokenCount": 5,
 //     "slpAddress": slpAddr

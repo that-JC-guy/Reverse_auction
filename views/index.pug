@@ -23,6 +23,7 @@ block main
                                     th Bid Rank 
                                     th Date 
                                     th Bid Amount 
+                                    th Tokens Offered
                                     th SLP Address 
                                 tbody 
                                     each bid, i in sentBids
@@ -30,6 +31,7 @@ block main
                                             td.bid-rank(align="center") #{i + 1} 
                                             td.bid-date(align="center") #{sentBids[i].dtm}
                                             td.bid-amount(align="center") #{sentBids[i].bidAmount}
+                                            td.bid-token-count(align="center") #{sentBids[i].tokenCount}
                                             td.bid-addr(align="center") #{sentBids[i].slpAddress}
                 default
                     .auction-synopsis

@@ -28,7 +28,8 @@ function getTopTenBids(bids) {
     for (i = 0; i < bids.$response.data.Count; i++) {
         const bidPair = {
             'dtm': processedBids[i]['dtm'],
-            'bidAmount': processedBids[i]['bidAmount'],  
+            'bidAmount': processedBids[i]['bidAmount'],
+            'tokenCount': processedBids[i]['tokenCount'],
             'slpAddress': processedBids[i]['slpAddress'] 
         }
         allBids.push(bidPair)
