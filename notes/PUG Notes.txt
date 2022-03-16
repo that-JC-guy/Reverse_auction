@@ -1,0 +1,7 @@
+// To install PUG cli
+npm install pug-cli 
+
+// To instantiate the PUG watcher/HTML renderer. This will 
+
+1) Go to the pug folder root directory (e.g. views) - cd views
+2) This will watch for PUG file changes and render the HTML prettified - pug -w ./ -o ./html -P
