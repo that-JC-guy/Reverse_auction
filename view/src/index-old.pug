@@ -1,0 +1,39 @@
+doctype html
+html
+    head 
+    body 
+        h1#PageTitle Emergent Order Token Buyback Reverse Auction
+        #intro
+            p#welcome Welcome to the Emergent Order auction website!
+        #auctions
+            - const auctionsList = [{auctionId: "2Q2022", tokenType: "Q"}]
+            case auctionsList.length
+                when 0
+                    .auction-synopsis
+                        p We are not currently running any auctions.
+                when 1
+                    .auction-synopsis
+                        p We are currently running one auction.
+                    .auction-summary
+                        p ---Show current top 10 bids of current single auction.---
+                        block auction
+                        //- - const bids=[{dtm: "3/15/22 15:48:01", bidAmount: 375, slpAddress: "simpleledger:39848a3c07s2md3hu32jdhdyfjrq53a6yhgnyueava4"}, {dtm: "3/14/22 23:37:07", bidAmount: 445, slpAddress: "simpleledger:3287583c07s2md3hu32jdhdyfjrq53a6yhgnyueava4"}]
+                        //- table.auction-summary-bids
+                        //-     each bid, i in bids
+                        //-         tr.bid
+                        //-             td.bid-date #{bids[i].dtm}
+                        //-             td.bid-amount #{bids[i].bidAmount}
+                        //-             td.bid-addr #{bids[i].slpAddress}
+                default
+                    .auction-synopsis
+                        p We are currently running multiple auctions. 
+                    .auction-summary
+                        p ---Show the auction selection tool.---
+                        //- - const curAuctions = ["Q","Z"]
+                        select#auctionId
+                            each auction in auctionsList
+                                option(value=auction.auctionId) #{auction.tokenType} #{auction.auctionId}
+    
+            .bid-options
+                p ---Show bid options if appropriate--
+            

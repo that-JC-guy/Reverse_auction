@@ -77,6 +77,7 @@ init ()
 //     const bid = {
 //     "auctionId": "DTM-TEST",
 //     "dtm": Date.now(),
+//     "tokenType": "Q"
 //     "bidderId": bidderId,
 //     "bidId": bidId,
 //     "bidAmount": bidAmount,
