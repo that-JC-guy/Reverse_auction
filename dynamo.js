@@ -3,18 +3,25 @@ const AWS = require('aws-sdk');
 const { all } = require('express/lib/application');
 require('dotenv').config();
 
-AWS.config.update({
-    region: 'localhost',
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-    endpoint: 'http://localhost:8000'
-});
+const dynamodbLocal = true
 
-// AWS.config.update({
-//     region: process.env.AWS_DEFAULT_REGION,
-//     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-//     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-// });
+if (dynamodbLocal){ 
+    AWS.config.update({
+        region: 'localhost',
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+        endpoint: 'http://localhost:8000'
+    });
+} else {
+    AWS.config.update({
+        region: process.env.AWS_DEFAULT_REGION,
+        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    });
+
+}
+
+
 
 const dynamoClient = new AWS.DynamoDB.DocumentClient();
 const AUCTION_TABLE_NAME = "reverse-auction-table";
