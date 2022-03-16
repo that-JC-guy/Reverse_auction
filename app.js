@@ -8,8 +8,20 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
+app.set('view engine', 'pug');
+app.use(bodyParser.urlencoded({ extended: true})); //fixes inputs in the case they include special characters
+
+app.get('/', async (req, res) => {
+    try {
+        const bids = await getBids();
+        // console.log(bids)
+        const bidsTopTen = getTopTenBids(bids)
+        res.render('index', { sentBids: bidsTopTen});
+     }  catch (error) {
+        console.error(err);
+        res.status(500).json({err: "Something went wrong..."})
+    }
+    
 });
  
 app.get('/bids', async (req, res) =>{
