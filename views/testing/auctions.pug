@@ -1,0 +1,9 @@
+block auction
+    p --- IN AUCTIONS ---
+    - const bids=[{dtm: "3/15/22 15:48:01", bidAmount: 375, slpAddress: "simpleledger:39848a3c07s2md3hu32jdhdyfjrq53a6yhgnyueava4"}, {dtm: "3/14/22 23:37:07", bidAmount: 445, slpAddress: "simpleledger:3287583c07s2md3hu32jdhdyfjrq53a6yhgnyueava4"}]
+    table.auction-summary-bids
+        each bid, i in bids
+            tr.bid
+                td.bid-date #{bids[i].dtm}
+                td.bid-amount #{bids[i].bidAmount}
+                td.bid-addr #{bids[i].slpAddress}
