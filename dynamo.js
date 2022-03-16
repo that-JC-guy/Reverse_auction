@@ -131,49 +131,49 @@ module.exports = {
 
 // const customer = {
 //     "customerId": customerId,
-//     "customerName": "Quartzite Corp",
+//     "customerName": "Zulu Corp",
 //     "engagementDate": Date.now(),
-//     "tokenType": "QUARTZ",
+//     "tokenType": "ZULU",
 //     "auctionStartDate": Date.now(),
 //     "auctionEndDate": 1650081599000,
 //     "contacts": {
 //         "primaryContact": {
-//             "name": "Dan Quartz",
-//             "email": "dan@quartz.co",
+//             "name": "Alice Zulu",
+//             "email": "alice@zulu.co",
 //             "phone": "234-567-8910",
-//             "address": "123 Quartz Street",
+//             "address": "123 Zulu Street",
 //             "address2": "",
-//             "city": "Quartz City",
+//             "city": "Zulu City",
 //             "state": "NH",
 //             "zipcode": "03102"
 //         },
 //         "businessContact": {
-//             "name": "Dan Quartz",
-//             "email": "dan@quartz.co",
+//             "name": "Alice Zulu",
+//             "email": "alice@zulu.co",
 //             "phone": "234-567-8910",
-//             "address": "123 Quartz Street",
+//             "address": "123 Zulu Street",
 //             "address2": "",
-//             "city": "Quartz City",
+//             "city": "Zulu City",
 //             "state": "NH",
 //             "zipcode": "03102"
 //         },
 //         "technicalContact": {
-//             "name": "Dan Quartz",
-//             "email": "dan@quartz.co",
+//             "name": "Alice Zulu",
+//             "email": "alice@zulu.co",
 //             "phone": "234-567-8910",
-//             "address": "123 Quartz Street",
+//             "address": "123 Zulu Street",
 //             "address2": "",
-//             "city": "Quartz City",
+//             "city": "Zulu City",
 //             "state": "NH",
 //             "zipcode": "03102"
 //         },
 //         "financialContact": {
-//             "name": "Dan Quartz",
-//             "email": "dan@quartz.co",
+//             "name": "Alice Zulu",
+//             "email": "alice@zulu.co",
 //             "phone": "234-567-8910",
-//             "address": "123 Quartz Street",
+//             "address": "123 Zulu Street",
 //             "address2": "",
-//             "city": "Quartz City",
+//             "city": "Zulu City",
 //             "state": "NH",
 //             "zipcode": "03102"
 //         }
