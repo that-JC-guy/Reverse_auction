@@ -1,0 +1,45 @@
+extends templates/layout
+
+block main
+    main
+        h1#PageTitle Our Current Reverse Auctions
+        #intro
+            p#welcome Welcome to the our auction website!
+        #auctions
+            - const auctionsList = [{auctionId: "2Q2022", tokenType: "Q"}]
+            case auctionsList.length
+                when 0
+                    .auction-synopsis
+                        p We are not currently running any auctions.
+                when 1
+                    .auction-synopsis
+                        p We are currently running one auction.
+                    .auction-summary
+                        p ---Show current top 10 bids of current single auction.---
+                        //- - const bids=[{dtm: "3/15/22 15:48:01", bidAmount: 375, slpAddress: "simpleledger:39848a3c07s2md3hu32jdhdyfjrq53a6yhgnyueava4"}, {dtm: "3/14/22 23:37:07", bidAmount: 445, slpAddress: "simpleledger:3287583c07s2md3hu32jdhdyfjrq53a6yhgnyueava4"}]
+                        table.auction-summary-bids
+                            thead 
+                                tr 
+                                    th Bid Rank 
+                                    th Date 
+                                    th Bid Amount 
+                                    th SLP Address 
+                                tbody 
+                                    each bid, i in sentBids
+                                        tr.bid
+                                            td.bid-rank(align="center") #{i + 1} 
+                                            td.bid-date(align="center") #{sentBids[i].dtm}
+                                            td.bid-amount(align="center") #{sentBids[i].bidAmount}
+                                            td.bid-addr(align="center") #{sentBids[i].slpAddress}
+                default
+                    .auction-synopsis
+                        p We are currently running multiple auctions. 
+                    .auction-summary
+                        p ---Show the auction selection tool.---
+                        - const curAuctions = ["Q","Z"]
+                        select#auctionId
+                            each auction in auctionsList
+                                option(value=auction.auctionId) #{auction.tokenType} #{auction.auctionId}
+    
+            .bid-options
+                p ---Show bid options if appropriate--

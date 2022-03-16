@@ -27,14 +27,15 @@ function getTopTenBids(bids) {
     allBids = []
     for (i = 0; i < bids.$response.data.Count; i++) {
         const bidPair = {
-            'bidAmount:': processedBids[i]['bidAmount'],  
+            'dtm': processedBids[i]['dtm'],
+            'bidAmount': processedBids[i]['bidAmount'],  
             'slpAddress': processedBids[i]['slpAddress'] 
         }
         allBids.push(bidPair)
     }
-
+    
     //sort all bids by bidAmount in ascending order
-    let sortedBids = allBids.reverse(function(a,b){return a.bidAmount - b.bidAmount})
+    let sortedBids = allBids.sort(function(a,b){return a.bidAmount - b.bidAmount})
 
     //return the top ten bids
     topTenBids = []
@@ -52,11 +53,13 @@ module.exports = {
 
 // Code below for testing only
 
-async function init() {
-    var allBids = await getBids()
-    console.log(allBids)
-    var lowestBid = getLowestBid(allBids)
-    console.log('Lowest Bid: ' + lowestBid)
-}
+// async function init() {
+//     var allBids = await getBids()
+//     console.log(allBids)
+//     var lowestBid = getLowestBid(allBids)
+//     console.log('Lowest Bid: ' + lowestBid)
+//     var topTenBids = getTopTenBids(allBids)
+//     console.log(topTenBids)
+// }
 
-init ()
+// init ()

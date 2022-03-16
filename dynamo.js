@@ -57,18 +57,18 @@ module.exports = {
 //---===== TESTING CODE ONLY ====---//
 // Code below for testing only
 
-async function init() {
-    const allBids = await getBids()
-    console.log(allBids)
-    console.log('Total Bid Count: ' + allBids.$response.data.Count)
+// async function init() {
+//     const allBids = await getBids()
+//     console.log(allBids)
+//     console.log('Total Bid Count: ' + allBids.$response.data.Count)
 
-}
+// }
 
-init ()
+// init ()
 
 
-// Used for adding new table entries for testing only
-// for (i = 0; i < 25; i++){
+// // Used for adding new table entries for testing only
+// for (i = 0; i < 24; i++){
 //     const bidderId = parseInt(Math.floor(Math.random()*10000)+1);
 //     const bidId = parseInt(Math.floor(Math.random()*1000)+1);
 //     const bidAmount = parseInt(Math.floor(Math.random()*1000)+1);
@@ -77,7 +77,7 @@ init ()
 //     const bid = {
 //     "auctionId": "DTM-TEST",
 //     "dtm": Date.now(),
-//     "tokenType": "Q"
+//     "tokenType": "Q",
 //     "bidderId": bidderId,
 //     "bidId": bidId,
 //     "bidAmount": bidAmount,
