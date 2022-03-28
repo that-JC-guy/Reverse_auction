@@ -13,7 +13,7 @@ This is actively being worked on, and includes the following platforms:
 - Pug
 - Docker
 
-The environment is currently configured to us a local development instance of DynamoDB. Information on how to do this using Docker can be found at [https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html).
+The environment is currently configured to us a local development instance of DynamoDB. Information on how to do this using Docker can be found at [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html).
 
 ## Project Goals
 - To provide a simple interface for managing reverse auctions. 
