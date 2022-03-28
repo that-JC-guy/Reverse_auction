@@ -15,7 +15,7 @@ This is actively being worked on, and includes the following platforms:
 
 The environment is currently configured to us a local development instance of DynamoDB. 
 
-##Project Goals
+## Project Goals
 - To provide a simple interface for managing reverse auctions. 
   - Simple, containerized deployment with self-healing capabilities.
   - Management of multiple simulataneous auctions. 
