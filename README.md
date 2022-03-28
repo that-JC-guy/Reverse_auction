@@ -9,7 +9,7 @@ The purpose of Reverse Auction is create a simple, DynamoDB-backed wesbite to ma
 ## Current Status
 This is actively being worked on, and includes the following platforms:
 - DynamoDB
-- Node.JS
+- Node.js
 - Pug
 - Docker
 
@@ -21,3 +21,6 @@ The environment is currently configured to us a local development instance of Dy
   - Management of multiple simulataneous auctions. 
   - Segmentation and preservation of bidder privacy.
   - Easy style customization and presentation of relevant auction information. 
+
+## Auction Information
+Auctions the base unit for the application. An auction consists of a customer (whom the auction benefits) and 
