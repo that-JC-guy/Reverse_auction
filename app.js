@@ -47,8 +47,9 @@ app.post('/submit_bid', async (req, res) =>{
     }
 })
 
-/*
+
 /* FORM CODE */
+/*
 app.set('view engine', 'pug');
 app.use(bodyParser.urlencoded({ extended: true})); //fixes inputs in the case they include special characters
 
