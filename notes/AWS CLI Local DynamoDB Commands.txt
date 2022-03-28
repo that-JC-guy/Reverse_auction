@@ -2,7 +2,17 @@
 1) cd dyanmodb
 2) docker-compose up
 
+<<<<<<< ux-dev
+To flatten and repopulate the tables:
+----------------------------------------
+aws dynamodb delete-table --table-name reverse-auction-table --endpoint-url http://localhost:8000
+aws dynamodb delete-table --table-name reverse-auction-customers --endpoint-url http://localhost:8000
+aws dynamodb create-table --table-name reverse-auction-table --attribute-definitions AttributeName=auctionId,AttributeType=S AttributeName=dtm,AttributeType=N --key-schema AttributeName=auctionId,KeyType=HASH AttributeName=dtm,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --endpoint-url http://localhost.:8000
+aws dynamodb create-table --table-name reverse-auction-customers --attribute-definitions AttributeName=customerId,AttributeType=N AttributeName=customerName,AttributeType=S --key-schema AttributeName=customerId,KeyType=HASH AttributeName=customerName,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --endpoint-url http://localhost.:8000
 
+--Edit repop_dyanmo.js to enable bids and/or customers (set const values to true.)--
+node .\repop_dyanmo.js
+----------------------------------------
 
 // Create table with Primary and secondary indices for local DyanmoDB instance
 aws dynamodb create-table --table-name reverse-auction-table --attribute-definitions AttributeName=auctionId,AttributeType=S AttributeName=dtm,AttributeType=N --key-schema AttributeName=auctionId,KeyType=HASH AttributeName=dtm,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --endpoint-url http://localhost.:8000
@@ -14,3 +24,12 @@ aws dynamodb list-tables --endpoint-url http://localhost:8000
 
 //Delete table
 aws dynamodb delete-table --table-name reverse-auction-table --endpoint-url http://localhost:8000
+
+aws dynamodb delete-table --table-name reverse-auction-customers --endpoint-url http://localhost:8000
+
+// Scan table
+aws dynamodb scan --table-name reverse-auction-table --endpoint-url http://localhost:8000
+
+aws dynamodb scan --table-name reverse-auction-customers --endpoint-url http://localhost:8000
+
+
