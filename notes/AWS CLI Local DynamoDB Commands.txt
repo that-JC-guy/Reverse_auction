@@ -3,6 +3,7 @@
 2) docker-compose up
 
 
+
 // Create table with Primary and secondary indices for local DyanmoDB instance
 aws dynamodb create-table --table-name reverse-auction-table --attribute-definitions AttributeName=auctionId,AttributeType=S AttributeName=dtm,AttributeType=N --key-schema AttributeName=auctionId,KeyType=HASH AttributeName=dtm,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --endpoint-url http://localhost.:8000
 
@@ -13,5 +14,3 @@ aws dynamodb list-tables --endpoint-url http://localhost:8000
 
 //Delete table
 aws dynamodb delete-table --table-name reverse-auction-table --endpoint-url http://localhost:8000
-
-aws dynamodb delete-table --table-name reverse-auction-customers --endpoint-url http://localhost:8000
