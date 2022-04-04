@@ -6,3 +6,4 @@ query_testing.js
 dynamodb/*
 dtm.js
 views/html/*
+python/*
