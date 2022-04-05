@@ -107,7 +107,7 @@ module.exports = {
 // init ()
 
 
-// // Used for adding new AUCTION_TABLE_NAME table entries for testing only
+// Used for adding new AUCTION_TABLE_NAME table entries for testing only
 // for (i = 0; i < 24; i++){
 //     const bidderId = parseInt(Math.floor(Math.random()*10000)+1);
 //     const bidId = parseInt(Math.floor(Math.random()*1000)+1);
