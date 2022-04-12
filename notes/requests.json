@@ -1,0 +1,25 @@
+// Adding a bid
+//--------------
+//
+// On submitting a bid, the client provides:
+//      - auctionId
+//      - bidAmount
+//      - tokenCount
+//      - name
+//      - email
+//      - phone
+// 
+// Lambda function provides
+//      - dtm
+//      - bidId
+//      - tokenType     
+{
+    'bid': {
+        "auctionId": "DTM-TEST",
+        "bidAmount": bidAmount,
+        "tokenCount": 5,
+        "name": "John Q. Tokenholder",
+        "email": "jqtokenholder@here.co",
+        "phone": "234-567-8910"
+    }
+}
