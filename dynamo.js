@@ -3,7 +3,7 @@ const AWS = require('aws-sdk');
 const { all } = require('express/lib/application');
 require('dotenv').config();
 
-const dynamodbLocal = true
+const dynamodbLocal = false
 
 if (dynamodbLocal){ 
     AWS.config.update({
@@ -24,14 +24,14 @@ if (dynamodbLocal){
 
 
 const dynamoClient = new AWS.DynamoDB.DocumentClient();
-const AUCTION_TABLE_NAME = "reverse-auction-table";
-const CUSTOMER_TABLE_NAME = "reverse-auction-customers";
+const BID_TABLE_NAME = "reverse-auction-bids";
+const AUCTION_TABLE_NAME = "reverse-auction-auctions";
 
 
 const getBids = async () => { // Retrieve all bids from DynamoDB
     try {
         const params = {
-            TableName: AUCTION_TABLE_NAME,
+            TableName: BID_TABLE_NAME,
             KeyConditionExpression: 'auctionId = :ai',                                  //primary key and shortcut (can add 'and [sort key name] = :sk')
             ProjectionExpression: 'bidderId, dtm, bidAmount, slpAddress, tokenCount',   //filter fields being returned
             ExpressionAttributeValues: {                                                //What you are searching for in Partition/Sort Key
@@ -49,17 +49,22 @@ const getBids = async () => { // Retrieve all bids from DynamoDB
 }
 
 async function addUpdateBid(bid) { // Add or update bid to DyanmoDB
-    const params = {
-        TableName: AUCTION_TABLE_NAME,
-        Item: bid
-    };
+    try{
+        const params = {
+            TableName: BID_TABLE_NAME,
+            Item: bid
+        };
     return await dynamoClient.put(params).promise();
+    } catch (error){
+        console.log(error)
+    }
+
 }
 
 const getAllCustomers = async () => { // Retrieve customers from DynamoDB
     try {
         const params = {
-            TableName: CUSTOMER_TABLE_NAME,
+            TableName: AUCTION_TABLE_NAME,
         };
 
         var items;
@@ -77,12 +82,16 @@ const getAllCustomers = async () => { // Retrieve customers from DynamoDB
     }
 }
 
-async function addUpdateCustomer(customer) { // Add or update bid to DyanmoDB
-    const params = {
-        TableName: CUSTOMER_TABLE_NAME,
-        Item: customer
-    };
-    return await dynamoClient.put(params).promise();
+async function addUpdateAuction(auction) { // Add or update auction to DyanmoDB
+    try {
+        const params = {
+        TableName: AUCTION_TABLE_NAME,
+        Item: auction
+         };
+        return await dynamoClient.put(params).promise();
+    } catch(error){
+    console.log(error)
+    }
 }
 
 
@@ -90,7 +99,8 @@ module.exports = {
     dynamoClient,
     getBids,
     addUpdateBid,
-    getAllCustomers
+    getAllCustomers,
+    addUpdateAuction
 }
 
 //---===== TESTING CODE ONLY ====---//

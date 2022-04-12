@@ -1,10 +1,10 @@
-const { addUpdateBid, addUpdateCustomer } = require('./dynamo');
+const { addUpdateBid, addUpdateAuction } = require('./dynamo');
 
 const repopBids = false
-const repopCustomers = false
+const repopAuctions = true
 
 if (repopBids) {
-    // Used for adding new AUCTION_TABLE_NAME table entries for testing only
+    // Used for adding new BID_TABLE_NAME table entries for testing only
     for (i = 0; i < 24; i++){
         const bidderId = parseInt(Math.floor(Math.random()*10000)+1);
         const bidId = parseInt(Math.floor(Math.random()*1000)+1);
@@ -33,17 +33,18 @@ if (repopBids) {
 
 
 // // Used for adding new CUSTOMER_TABLE_NAME table entries for testing only
-if (repopCustomers){
+if (repopAuctions){
     const customer1Id = parseInt(Math.floor(Math.random()*10000)+1);
     const customer2Id = parseInt(Math.floor(Math.random()*10000)+1);
 
-    const customer1 = {
-        "customerId": customer1Id,
-        "customerName": "Zulu Corp",
-        "engagementDate": Date.now(),
+    const auction1 = {
+        "auctionId": "DTM-TEST",
         "tokenType": "ZULU",
         "auctionStartDate": Date.now(),
         "auctionEndDate": 1650081599000,
+        "customerId": customer1Id,
+        "customerName": "Zulu Corp",
+        "engagementDate": Date.now(),
         "contacts": {
             "primaryContact": {
                 "name": "Alice Zulu",
@@ -87,11 +88,12 @@ if (repopCustomers){
             }
         }
     }
-    const customer2 = {
+    const auction2 = {
+        "auctionId": "DTM-TEST",
+        "tokenType": "QUARTZ",
         "customerId": customer2Id,
         "customerName": "Quartz Corp",
         "engagementDate": Date.now(),
-        "tokenType": "QUARTZ",
         "auctionStartDate": Date.now(),
         "auctionEndDate": 1650081599000,
         "contacts": {
@@ -137,8 +139,8 @@ if (repopCustomers){
             }
         }
     }
-    addUpdateCustomer(customer1)
-    console.log (customer1)
-    addUpdateCustomer(customer2)
-    console.log (customer2)
+    addUpdateAuction(auction1)
+    console.log (auction1)
+    addUpdateAuction(auction2)
+    console.log (auction2)
 }
