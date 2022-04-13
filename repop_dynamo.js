@@ -5,26 +5,22 @@ const repopAuctions = true
 
 if (repopBids) {
     // Used for adding new BID_TABLE_NAME table entries for testing only
-    for (i = 0; i < 24; i++){
+    for (i = 0; i < 10; i++){
         const bidderId = parseInt(Math.floor(Math.random()*10000)+1);
-        const bidId = parseInt(Math.floor(Math.random()*1000)+1);
+        const bidId = parseInt(Math.floor(Math.random()*1000)+1) + "-d6e8977cb02e49eab879cdbca26979b6";
         const bidAmount = parseInt(Math.floor(Math.random()*1000)+1);
-        const slpAddr = "simpleledger:" + parseInt(Math.floor(Math.random()*10000)+1) + "83c07s2md3hu32jdhdyfjrq53a6yhgnyueava4"
         const tokenCount = parseInt(Math.floor(Math.random()*100)+1);
 
         const bid = {
-        "auctionId": "DTM-TEST",
-        "customer": "Zulu Corp",
+        "auctionId": "ZULU-TEST",
         "dtm": Date.now(),
-        "tokenType": "Z",
-        "bidderId": bidderId,
+        "tokenType": "ZULU",
         "bidId": bidId,
         "bidAmount": bidAmount,
         "name": "Alice Ethereum",
         "email": "alice@here.co",
         "phone": "234-567-8910",
-        "tokenCount": tokenCount,
-        "slpAddress": slpAddr
+        "tokenCount": tokenCount
         }
         console.log (bid)
         addUpdateBid(bid)
@@ -89,7 +85,7 @@ if (repopAuctions){
         }
     }
     const auction2 = {
-        "auctionId": "DTM-TEST",
+        "auctionId": "QUARTZ-TEST",
         "tokenType": "QUARTZ",
         "customerId": customer2Id,
         "customerName": "Quartz Corp",

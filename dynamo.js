@@ -49,6 +49,8 @@ const getBids = async () => { // Retrieve all bids from DynamoDB
 }
 
 async function addUpdateBid(bid) { // Add or update bid to DyanmoDB
+    AWS.config.update({region: 'us-east-1'})
+    
     try{
         const params = {
             TableName: BID_TABLE_NAME,
